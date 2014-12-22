@@ -1,0 +1,29 @@
+1.	- The p_lnk variable in the struct OS_TCB is the link pointer for the ready/sem. wait list.
+	- ret_val is an unsigned 32-bit integer that stores the return value upon completion of a wait.
+	- tsk_stack is the current task stack pointer (R13).
+	  *stack is the pointer to task stack memory block.
+	- Yes, casting a variable of struct OS_XCB to OS_TCB will keep the p_lnk field.
+	
+2.	- mp_tcb: Memory pool name, for allocation of the TCB.
+	  mp_stk: Allocate memory for the stack.
+	  
+3.	- Registers R0-R15 are saved on the task stack.
+	- Start address: p_tcb->stack
+	  End address: p_tcb->stack + (U16)os_stackinfo
+	- p_tcb->tsk_stack
+	- rt_get_PSP()
+	
+4.	- _delcare_box(mympool,12,20)
+	- _init_box(mypool,sizeof(mympool), 12)
+	- rt_alloc_box(mympool)
+	- rt_free_box(mympool, box)
+	
+5.	- rt_put_prio() puts the task "p_task" into a waiting list ordered by priority (highest priority task is at the beginning of the list) 
+	- rt_get_first() gets the task at the head of the aforementioned list (ie. task with the highest priority)
+
+6.	- rt_block() blocks the running task and chooses the next task that is ready
+	- rt_dispatch() dispatches the next task if any, or dispatches the highest ready task
+	
+7.	rt_mbx_wait() does not have a line to set the return value to OS_R_MBX because in this function, OS_R_MBX will already be returned regardless as the task will already have waited until a message was put in the mailbox.
+
+8.	os_rdy and os_rdy use the linked list data structure.

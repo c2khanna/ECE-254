@@ -1,0 +1,1 @@
+Print off the state of each OS task we created, create mamory scheme for each task, make sure no mamory leak happens. 

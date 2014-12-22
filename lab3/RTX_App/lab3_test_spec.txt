@@ -1,0 +1,11 @@
+task2 (default) - checking states of all tasks in the system. This task has priority 1.
+
+task3 - continuously allocates a block of 12 bytes of memory from testpool. This task has priority 1.
+
+task3h - continuously allocates a block of 12 bytes of memory from testpool, at a delay of os_dly_wait(10). This task has priority 2.
+
+task3hh - continuously allocates a block of 12 bytes of memory from testpool, at a delay of os_dly_wait(20). This task has priority 3.
+
+task4 - frees up the memory block at a period of os_dly_wait(50). This task has the highest priority to prevent preemption, 4. 
+
+task5 - checks states of all tasks in the system and prints them periodically at a period of os_dly_wait(1). This task has priority 1.

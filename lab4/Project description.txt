@@ -1,0 +1,1 @@
+Inter-process Communication by Message Passing. create multiple process, create scheme for single consumer/producer to work properly with no race condition or deadlock. 
